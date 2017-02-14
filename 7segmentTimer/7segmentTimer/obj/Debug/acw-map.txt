@@ -1,0 +1,4 @@
+_7segmentTimer.MainActivity, 7segmentTimer;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
+_7segmentTimer.MainActivity, 7segmentTimer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
+_7segmentTimer.MainActivity;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
+_7segmenttimer.MainActivity;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
