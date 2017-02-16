@@ -82,7 +82,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnylineFormsPage.cs" />
+    <Compile Include="App.cs" />
+    <None Include="baseView.cs" />
+    <None Include="CameraPreview.cs" />
+    <None Include="CameraPreviewRenderer.cs" />
+    <None Include="ClockView.cs" />
+    <Compile Include="ClockXamarineView.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MainActivityRender.cs" />
+    <Compile Include="MyCalendarRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,10 +109,13 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\drawable\icon420.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
