@@ -24,16 +24,47 @@ namespace _7segmentTimer
             base.Draw(canvas);
             using (var paint = new Paint())
             {
-                TestDraw1(canvas, paint);
+              //  TestDraw1(canvas, paint);
                 clockcircle(canvas, paint);
 
+                drawClockHand(canvas, paint);
 
                 clockcenter(canvas, paint);
-                createmesh(canvas, paint);
+            //    createmesh(canvas, paint);
             }
         }
 
-        
+        private void drawClockHand(Canvas canvas, Paint paint)
+        {
+            paint.AntiAlias = true;
+
+            var center = Width / 2;
+            var rShortHand = (float)(center * 0.60);
+            var rLongHand = (float)(center * 0.80);
+            var now = DateTime.Now;
+
+            //’·j
+            var shitaMin = (now.Minute) * Math.PI / 60;
+            paint.Color = Color.Green;
+            canvas.DrawLine(center,
+                center,
+                (float)(center - rLongHand * Math.Cos(shitaMin)),
+                (float)(center - rLongHand * Math.Sin(shitaMin)),
+                paint);
+
+
+            //’Zj
+            var shitaHour = ((60 * (now.Hour % 12) + now.Minute)* Math.PI) / 3600;
+
+            paint.SetStyle(Paint.Style.Fill);//ƒXƒ^ƒCƒ‹‚ğü•`‰æ‚Éİ’è
+            paint.Color = Color.Orange;
+            canvas.DrawLine(center,
+                center, 
+                (float)(center - rShortHand * Math.Cos(shitaHour)),
+                (float)(center - rShortHand * Math.Sin(shitaHour)),
+                paint);
+
+        }
 
         private void clockcenter(Canvas canvas, Paint paint)
         {
