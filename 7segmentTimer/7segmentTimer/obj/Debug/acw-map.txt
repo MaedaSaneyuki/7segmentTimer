@@ -1,3 +1,7 @@
+_7segmentTimer.ClockView, 7segmentTimer;md55e32732a2322f7fe9c605582361ed3ff.ClockView
+_7segmentTimer.ClockView, 7segmentTimer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55e32732a2322f7fe9c605582361ed3ff.ClockView
+_7segmentTimer.ClockView;md55e32732a2322f7fe9c605582361ed3ff.ClockView
+_7segmenttimer.ClockView;md55e32732a2322f7fe9c605582361ed3ff.ClockView
 _7segmentTimer.MainActivity, 7segmentTimer;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
 _7segmentTimer.MainActivity, 7segmentTimer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
 _7segmentTimer.MainActivity;md55e32732a2322f7fe9c605582361ed3ff.MainActivity
@@ -10,6 +14,10 @@ _7segmentTimer.MyCalendarRenderer, 7segmentTimer;md55e32732a2322f7fe9c605582361e
 _7segmentTimer.MyCalendarRenderer, 7segmentTimer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55e32732a2322f7fe9c605582361ed3ff.MyCalendarRenderer
 _7segmentTimer.MyCalendarRenderer;md55e32732a2322f7fe9c605582361ed3ff.MyCalendarRenderer
 _7segmenttimer.MyCalendarRenderer;md55e32732a2322f7fe9c605582361ed3ff.MyCalendarRenderer
+_7segmentTimer.ViewGroupSub, 7segmentTimer;md55e32732a2322f7fe9c605582361ed3ff.ViewGroupSub
+_7segmentTimer.ViewGroupSub, 7segmentTimer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55e32732a2322f7fe9c605582361ed3ff.ViewGroupSub
+_7segmentTimer.ViewGroupSub;md55e32732a2322f7fe9c605582361ed3ff.ViewGroupSub
+_7segmenttimer.ViewGroupSub;md55e32732a2322f7fe9c605582361ed3ff.ViewGroupSub
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager+IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager.IOnPageChangeListenerImplementor;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor

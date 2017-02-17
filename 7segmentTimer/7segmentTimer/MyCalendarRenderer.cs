@@ -20,18 +20,26 @@ using System.ComponentModel;
 
 namespace _7segmentTimer
 {
-    class MyCalendarRenderer : ViewRenderer<_7segmentTimer.ClockXamarineView, CalendarView>//2
-  {
-    protected override void OnElementChanged(
-      ElementChangedEventArgs<_7segmentTimer.ClockXamarineView> e)
+    class MyCalendarRenderer : ViewRenderer<_7segmentTimer.ClockXamarineView, ViewGroupSub>//2
+    {
+        protected override void OnElementChanged(ElementChangedEventArgs<_7segmentTimer.ClockXamarineView> e)
         {
             base.OnElementChanged(e);
-            SetNativeControl(new CalendarView(this.Context));
-        }
+            //Set
 
+            //(new ClockView(this.Context));
+
+            
+            if (Control == null)
+            {
+                var cameraPreview = new ViewGroupSub(Context); 
+                SetNativeControl(cameraPreview);
+            }
+        }
+        
         protected override void OnElementPropertyChanged( // <--3
-          object sender,
-          PropertyChangedEventArgs e)
+            object sender,
+            PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
 
@@ -42,11 +50,32 @@ namespace _7segmentTimer
 
             //if (e.PropertyName == MyCalendar.CurrentDateProperty.PropertyName)
             {
-                var start = new DateTime(1970, 1, 1); // <--4
-                //var diff = Element.CurrentDate - start;
-                var diff = DateTime.Today - start;
-                Control.Date = Convert.ToInt64(diff.TotalMilliseconds);
+            //    var start = new ClockView(Context); // <--4
+                
             }
         }
     }
+
+    public sealed class ViewGroupSub : ViewGroup
+    {
+        private ClockView clockView;
+
+        public ViewGroupSub(Context context): base(context)
+        {
+            clockView = new ClockView(context);
+            AddView(clockView);
+        }
+
+        protected override void OnLayout(bool changed, int l, int t, int r, int b)
+        {
+            var msw = MeasureSpec.MakeMeasureSpec(r - l, MeasureSpecMode.Exactly);
+            var msh = MeasureSpec.MakeMeasureSpec(b - t, MeasureSpecMode.Exactly);
+
+            clockView.Measure(msw, msh);
+            clockView.Layout(0, 0, r - l, b - t);
+        }
+
+
+    }
+
 }

@@ -54,13 +54,14 @@ namespace _7segmentTimer
                 Children = {
 					label,
                     //clockImage,
-                    new ClockXamarineView
+                    button,
+                                        new ClockXamarineView
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Center
-                    },
-                    button
-				}
+                        VerticalOptions = LayoutOptions.FillAndExpand
+                    }
+
+                }
             };
         }
 

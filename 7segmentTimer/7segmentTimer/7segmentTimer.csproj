@@ -87,7 +87,7 @@
     <None Include="baseView.cs" />
     <None Include="CameraPreview.cs" />
     <None Include="CameraPreviewRenderer.cs" />
-    <None Include="ClockView.cs" />
+    <Compile Include="ClockView.cs" />
     <Compile Include="ClockXamarineView.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainActivityRender.cs" />
