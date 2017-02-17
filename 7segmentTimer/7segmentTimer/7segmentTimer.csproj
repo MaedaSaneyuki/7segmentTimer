@@ -82,16 +82,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnylineFormsPage.cs" />
+    <Compile Include="MainContentPage.cs" />
     <Compile Include="App.cs" />
-    <None Include="baseView.cs" />
-    <None Include="CameraPreview.cs" />
-    <None Include="CameraPreviewRenderer.cs" />
+    <Compile Include="CameraXamarineView.cs" />
+    <Compile Include="CameraPreviewGroup.cs" />
+    <Compile Include="CameraPreviewContentPage.cs" />
+    <Compile Include="CameraPreviewRenderer.cs" />
     <Compile Include="ClockView.cs" />
-    <Compile Include="ClockXamarineView.cs" />
+    <Compile Include="ClockXamarineFormsView.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainActivityRender.cs" />
-    <Compile Include="MyCalendarRenderer.cs" />
+    <Compile Include="ClockRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

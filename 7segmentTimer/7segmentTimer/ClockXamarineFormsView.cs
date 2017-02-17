@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace _7segmentTimer
 {
-    public class ClockXamarineView : View
+    public class ClockXamarineFormsView : View
     {
     }
 

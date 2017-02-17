@@ -8,12 +8,10 @@ using Android.OS;
 
 namespace _7segmentTimer
 {
-    [Activity(Label = "_7segmentTimer", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Loading Xamarin.Forms.", MainLauncher = true)]
     //public class MainActivity : Activity
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
-        int count = 1;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);

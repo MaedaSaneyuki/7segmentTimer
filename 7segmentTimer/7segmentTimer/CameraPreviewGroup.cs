@@ -7,7 +7,7 @@ using Android.Views;
 
 namespace _7segmentTimer
 {
-	public sealed class CameraPreview : ViewGroup, ISurfaceHolderCallback
+	public sealed class CameraPreviewGroup : ViewGroup, ISurfaceHolderCallback
 	{
 		SurfaceView surfaceView;
 		ISurfaceHolder holder;
@@ -29,7 +29,7 @@ namespace _7segmentTimer
 			}
 		}
 
-		public CameraPreview (Context context)
+		public CameraPreviewGroup (Context context)
 			: base (context)
 		{
 			surfaceView = new SurfaceView (context);

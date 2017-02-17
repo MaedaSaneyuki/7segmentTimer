@@ -15,9 +15,9 @@ using Android.Graphics.Drawables;
 
 namespace _7segmentTimer
 {
-    class ClockView : View
+    class ClockAndroidView : View
     {
-        public ClockView(Context context) : base(context) { }
+        public ClockAndroidView(Context context) : base(context) { }
 
         public override void Draw(Canvas canvas)
         {
@@ -28,15 +28,43 @@ namespace _7segmentTimer
                 clockcircle(canvas, paint);
 
                 drawClockHand(canvas, paint);
+                drawClockHandTest(canvas, paint);
 
                 clockcenter(canvas, paint);
             //    createmesh(canvas, paint);
             }
         }
 
+        private void drawClockHandTest(Canvas canvas, Paint paint)
+        {
+
+            paint.SetStyle(Paint.Style.Fill);//ÉXÉ^ÉCÉãÇê¸ï`âÊÇ…ê›íË
+            paint.Color = new Color(0x49, 0x71, 0xFF);
+            paint.StrokeWidth = 5;
+
+            var center = Width / 2;
+            var rShortHandMesureStart = (float)(center * 0.85);
+            var rShortHandMesureEnd = (float)(center * 0.99);
+
+            for (int j=0;j<12;j++)
+            {
+                var shitaMin = (j+3) * Math.PI / 6;
+
+                canvas.DrawLine(
+                    (float)(center - rShortHandMesureStart * Math.Cos(shitaMin)),
+                    (float)(center - rShortHandMesureStart * Math.Sin(shitaMin)),
+                    (float)(center - rShortHandMesureEnd * Math.Cos(shitaMin)),
+                    (float)(center - rShortHandMesureEnd * Math.Sin(shitaMin)),
+                    paint);
+
+            }
+            
+        }
+
         private void drawClockHand(Canvas canvas, Paint paint)
         {
             paint.AntiAlias = true;
+            paint.StrokeWidth = 40;
 
             var center = Width / 2;
             var rShortHand = (float)(center * 0.60);
@@ -44,9 +72,10 @@ namespace _7segmentTimer
             var now = DateTime.Now;
 
             //í∑êj
-            var shitaMin = (now.Minute) * Math.PI / 60;
+            var shitaMin = (now.Minute+15) * Math.PI / 30;
             paint.Color = Color.Green;
-            canvas.DrawLine(center,
+            canvas.DrawLine(
+                center,
                 center,
                 (float)(center - rLongHand * Math.Cos(shitaMin)),
                 (float)(center - rLongHand * Math.Sin(shitaMin)),
@@ -54,7 +83,7 @@ namespace _7segmentTimer
 
 
             //íZêj
-            var shitaHour = ((60 * (now.Hour % 12) + now.Minute)* Math.PI) / 3600;
+            var shitaHour = (((now.Hour % 12 + 3) * 60 + now.Minute)* Math.PI) / 360;
 
             paint.SetStyle(Paint.Style.Fill);//ÉXÉ^ÉCÉãÇê¸ï`âÊÇ…ê›íË
             paint.Color = Color.Orange;
@@ -71,7 +100,7 @@ namespace _7segmentTimer
             paint.AntiAlias = true;
 
             var center = Width / 2;
-            var r = 60;
+            var r = (float)(center * 0.15);
 
             paint.SetStyle(Paint.Style.Fill);//ÉXÉ^ÉCÉãÇê¸ï`âÊÇ…ê›íË
             paint.Color = new Color(0x49, 0x71, 0xFF);

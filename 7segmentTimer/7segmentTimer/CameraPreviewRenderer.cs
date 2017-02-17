@@ -3,19 +3,19 @@ using Android.Hardware;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer (typeof(CustomRenderer.CameraPreview), typeof(CameraPreviewRenderer))]
+[assembly: ExportRenderer (typeof(_7segmentTimer.CameraXamarineView), typeof(_7segmentTimer.CameraPreviewRenderer))]
 namespace _7segmentTimer
 {
-	public class CameraPreviewRenderer : ViewRenderer<CustomRenderer.CameraPreview, CustomRenderer.Droid.CameraPreview>
+	public class CameraPreviewRenderer : ViewRenderer<_7segmentTimer.CameraXamarineView, _7segmentTimer.CameraPreviewGroup>
 	{
-		CameraPreview cameraPreview;
+		CameraPreviewGroup cameraPreview;
 
-		protected override void OnElementChanged (ElementChangedEventArgs<CustomRenderer.CameraPreview> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<CameraXamarineView> e)
 		{
 			base.OnElementChanged (e);
 
 			if (Control == null) {
-				cameraPreview = new CameraPreview (Context);
+				cameraPreview = new CameraPreviewGroup (Context);
 				SetNativeControl (cameraPreview);
 			}
 

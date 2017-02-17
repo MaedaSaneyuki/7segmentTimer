@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace _7segmentTimer
 {
-    class AnylineFormsPage : ContentPage
+    class MainContentPage : ContentPage
     {
-        public AnylineFormsPage()
+        public MainContentPage()
         {
             var label = new Label
             {
@@ -25,7 +25,8 @@ namespace _7segmentTimer
 
             button.Clicked += (s, e) => 
             {
-               // Navigation.PushAsync(new EnergyPage());
+                // Navigation.PushAsync(new EnergyPage());
+                Navigation.PushAsync(new CameraPreviewContentPage());
             };
 
             Image clockImage = new Image
@@ -49,13 +50,13 @@ namespace _7segmentTimer
             
             Content = new StackLayout
             {
-                Spacing = 30,
+                Spacing = 15,
                 VerticalOptions = LayoutOptions.Start,
                 Children = {
 					label,
                     //clockImage,
                     button,
-                                        new ClockXamarineView
+                                        new ClockXamarineFormsView
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand

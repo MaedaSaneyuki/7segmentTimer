@@ -6,7 +6,7 @@ namespace _7segmentTimer
     {
         public App()
         {
-            MainPage = new NavigationPage(new AnylineFormsPage());
+            MainPage = new NavigationPage(new MainContentPage());
         }
 
         protected override void OnStart()

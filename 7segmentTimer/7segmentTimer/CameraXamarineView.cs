@@ -1,25 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Xamarin.Forms;
 
 
 namespace _7segmentTimer
 {
-    class baseView
+    public class CameraXamarineView : View
     {
             public static readonly BindableProperty CameraProperty = BindableProperty.Create(
                 propertyName: "Camera",
                 returnType: typeof(CameraOptions),
-                declaringType: typeof(CameraPreview),
+                declaringType: typeof(CameraPreviewGroup),
                 defaultValue: CameraOptions.Rear);
 
             public CameraOptions Camera

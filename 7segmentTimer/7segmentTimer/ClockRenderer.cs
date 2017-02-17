@@ -15,21 +15,16 @@ using Xamarin.Forms;
 using System.ComponentModel;
 
 [assembly: ExportRenderer(
-  typeof(_7segmentTimer.ClockXamarineView),
-  typeof(_7segmentTimer.MyCalendarRenderer))] // 
+  typeof(_7segmentTimer.ClockXamarineFormsView),
+  typeof(_7segmentTimer.ClockRenderer))] // 
 
 namespace _7segmentTimer
 {
-    class MyCalendarRenderer : ViewRenderer<_7segmentTimer.ClockXamarineView, ViewGroupSub>//2
+    class ClockRenderer : ViewRenderer<_7segmentTimer.ClockXamarineFormsView, ViewGroupSub>//2
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<_7segmentTimer.ClockXamarineView> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<_7segmentTimer.ClockXamarineFormsView> e)
         {
             base.OnElementChanged(e);
-            //Set
-
-            //(new ClockView(this.Context));
-
-            
             if (Control == null)
             {
                 var cameraPreview = new ViewGroupSub(Context); 
@@ -58,11 +53,11 @@ namespace _7segmentTimer
 
     public sealed class ViewGroupSub : ViewGroup
     {
-        private ClockView clockView;
+        private ClockAndroidView clockView;
 
         public ViewGroupSub(Context context): base(context)
         {
-            clockView = new ClockView(context);
+            clockView = new ClockAndroidView(context);
             AddView(clockView);
         }
 
