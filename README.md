@@ -6,7 +6,7 @@
 ### 機能
 
 * LED7セグ読み取り。
-![LED7seg.](http:)
+![LED7seg.](https://maedasaneyuki.github.io/7segmentTimer/LED7seg.png)
 * ランドリー完了までの時間表示
 * 完了時間のバイブ通知
 
