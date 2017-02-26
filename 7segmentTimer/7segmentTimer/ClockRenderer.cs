@@ -43,9 +43,10 @@ namespace _7segmentTimer
                 return;
             }
 
-            //if (e.PropertyName == MyCalendar.CurrentDateProperty.PropertyName)
+            if (e.PropertyName == ClockXamarineFormsView.PeriodEndPropaty.PropertyName)
             {
-            //    var start = new ClockView(Context); // <--4
+
+                ((ViewGroupSub)this.Control).PeriodEnd = Element.PeriodEnd;
                 
             }
         }
@@ -70,7 +71,17 @@ namespace _7segmentTimer
             clockView.Layout(0, 0, r - l, b - t);
         }
 
+        public DateTime PeriodEnd
+        {
+            get { return clockView.periodEnd; }
+            set { clockView.periodEnd = value; }
+        }
+       
+
 
     }
+
+
+
 
 }

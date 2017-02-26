@@ -11,15 +11,32 @@ using Android.Views;
 using Android.Widget;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using System.Timers;
 
 
 namespace _7segmentTimer
 {
     class ClockAndroidView : View
     {
+        private Timer timer;
+        private Handler handler = new Handler();
+        public DateTime periodEnd = DateTime.MinValue;
+
         public ClockAndroidView(Context context) : base(context)
         {
             this.SetBackgroundColor(Color.White);
+            timer = new Timer();
+            timer.Interval = 500;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+
+            timer.Elapsed += (s, v) =>
+            {
+                handler.Post(() => this.Invalidate());
+                
+               
+            };
+
         }
 
         public override void Draw(Canvas canvas)
@@ -30,12 +47,55 @@ namespace _7segmentTimer
               //  TestDraw1(canvas, paint);
                 clockcircle(canvas, paint);
 
+                drawClockSecHand(canvas, paint);
+                if(periodEnd > DateTime.Now)
+                {
+                    drawPeriod(canvas, paint);
+                }
                 drawClockHand(canvas, paint);
                 drawClockHandTest(canvas, paint);
 
                 clockcenter(canvas, paint);
             //    createmesh(canvas, paint);
             }
+        }
+
+        private void drawPeriod(Canvas canvas, Paint paint)
+        {
+            paint.AntiAlias = true;
+            paint.StrokeWidth = 2;
+
+            var center = Width / 2;
+            var rShortHand = (float)(center * 0.60);
+            var rLongHand = (float)(center * 0.80);
+            var now = DateTime.Now;
+
+
+            //í∑êj
+            var shitaPeriod = 360 -(periodEnd.Minute + 15) * 6;
+            var shitaMin = 360 - (now.Minute + 15) * 6;
+
+
+            paint.SetStyle(Paint.Style.Fill);
+            paint.Color = Color.Pink;
+            paint.Alpha = 80;
+            canvas.DrawArc((float)(center*0.1), (float)(center * 0.1),
+                (float)(center *2*0.95),
+                (float)(center *2*0.95),
+                (float)shitaPeriod,
+                (float)shitaMin,
+                true,
+                paint);
+            paint.SetStyle(Paint.Style.Stroke);
+            paint.Color = Color.Red;
+            canvas.DrawArc((float)(center * 0.1), (float)(center * 0.1),
+                (float)(center * 2 * 0.95),
+                (float)(center * 2 * 0.95),
+                (float)shitaPeriod,
+                (float)shitaMin,
+                true,
+                paint);
+
         }
 
         private void drawClockHandTest(Canvas canvas, Paint paint)
@@ -62,6 +122,27 @@ namespace _7segmentTimer
 
             }
             
+        }
+
+        private void drawClockSecHand(Canvas canvas, Paint paint)
+        {
+            paint.AntiAlias = true;
+            paint.StrokeWidth = 25;
+
+            var center = Width / 2;
+            var rLongHand = (float)(center * 0.79);
+            var now = DateTime.Now;
+
+            //ïbêj
+            var shitaMin = (now.Second + 15) * Math.PI / 30;
+            paint.Color = Color.Red;
+            canvas.DrawLine(
+                center,
+                center,
+                (float)(center - rLongHand * Math.Cos(shitaMin)),
+                (float)(center - rLongHand * Math.Sin(shitaMin)),
+                paint);
+
         }
 
         private void drawClockHand(Canvas canvas, Paint paint)
