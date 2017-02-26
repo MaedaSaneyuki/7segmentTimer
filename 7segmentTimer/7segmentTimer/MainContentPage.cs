@@ -11,7 +11,8 @@ namespace _7segmentTimer
             {
                 Text = "コインランドリータイマー",
                 FontAttributes = FontAttributes.None,
-                FontSize = 20
+                FontSize = 20,
+                TextColor = Color.Black
             };
 
             var button = new Button
@@ -47,22 +48,25 @@ namespace _7segmentTimer
             };
 
             //clockImage.l
-            
+
+            this.BackgroundColor = Color.White;
+
             Content = new StackLayout
             {
                 Spacing = 15,
                 VerticalOptions = LayoutOptions.Start,
                 Children = {
-					label,
+                    label,
                     //clockImage,
                     button,
-                                        new ClockXamarineFormsView
+                    new ClockXamarineFormsView
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand
                     }
 
-                }
+                },
+                //BackgroundColor = Color.White
             };
         }
 

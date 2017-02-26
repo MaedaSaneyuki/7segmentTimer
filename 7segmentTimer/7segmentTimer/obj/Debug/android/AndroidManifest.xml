@@ -9,7 +9,7 @@
   <uses-feature android:name="android.hardware.camera.flash" />
   <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
   <application android:label="_7segmentTimer" android:icon="@drawable/icon420" android:hardwareAccelerated="true" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:label="Loading Xamarin.Forms." android:name="md55e32732a2322f7fe9c605582361ed3ff.MainActivity">
+    <activity android:label="コインランドリータイマー" android:name="md55e32732a2322f7fe9c605582361ed3ff.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

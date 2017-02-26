@@ -37,30 +37,30 @@ namespace _7segmentTimer
 
 			windowManager = Context.GetSystemService (Context.WindowService).JavaCast<IWindowManager> ();
 
-			IsPreviewing = false;
+            //surfaceView.SetBackgroundColor(Android.Graphics.Color.White);
+
+            IsPreviewing = false;
 			holder = surfaceView.Holder;
 			holder.AddCallback (this);
 		}
 
-		protected override void OnMeasure (int widthMeasureSpec, int heightMeasureSpec)
+        protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
+        {
+            int width = ResolveSize(SuggestedMinimumWidth, widthMeasureSpec);
+            int height = ResolveSize(SuggestedMinimumHeight, heightMeasureSpec);
+            SetMeasuredDimension(width, height);
+
+        }
+
+        protected override void OnLayout (bool changed, int l, int t, int r, int b)
 		{
-			int width = ResolveSize (SuggestedMinimumWidth, widthMeasureSpec);
-			int height = ResolveSize (SuggestedMinimumHeight, heightMeasureSpec);
-			SetMeasuredDimension (width, height);
+            var msw = MeasureSpec.MakeMeasureSpec(r - l, MeasureSpecMode.Exactly);
+            var msh = MeasureSpec.MakeMeasureSpec(b - t, MeasureSpecMode.Exactly);
 
-			if (supportedPreviewSizes != null) {
-				previewSize = GetOptimalPreviewSize (supportedPreviewSizes, width, height);
-			}
-		}
-
-		protected override void OnLayout (bool changed, int l, int t, int r, int b)
-		{
-			var msw = MeasureSpec.MakeMeasureSpec (r - l, MeasureSpecMode.Exactly);
-			var msh = MeasureSpec.MakeMeasureSpec (b - t, MeasureSpecMode.Exactly);
-
-			surfaceView.Measure (msw, msh);
-			surfaceView.Layout (0, 0, r - l, b - t);
-		}
+            surfaceView.Measure(msw, msh);
+            surfaceView.Layout(0, 0, r - l, b - t);
+         //   surfaceView.Layout(0, 0, r - l, r - l);
+        }
 
 		public void SurfaceCreated (ISurfaceHolder holder)
 		{
@@ -83,7 +83,15 @@ namespace _7segmentTimer
 		public void SurfaceChanged (ISurfaceHolder holder, Android.Graphics.Format format, int width, int height)
 		{
 			var parameters = Preview.GetParameters ();
-			parameters.SetPreviewSize (previewSize.Width, previewSize.Height);
+            //プレビューサイズ設定
+            if (supportedPreviewSizes != null) {
+                previewSize = GetOptimalPreviewSize(supportedPreviewSizes, surfaceView.Width, surfaceView.Height);
+            }
+            parameters.SetPreviewSize(previewSize.Width, previewSize.Height);
+
+            //フレームレート設定
+            parameters.SetPreviewFpsRange(10000, 24000);
+
 			RequestLayout ();
 
 			switch (windowManager.DefaultDisplay.Rotation) {

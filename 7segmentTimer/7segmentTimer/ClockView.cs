@@ -17,7 +17,10 @@ namespace _7segmentTimer
 {
     class ClockAndroidView : View
     {
-        public ClockAndroidView(Context context) : base(context) { }
+        public ClockAndroidView(Context context) : base(context)
+        {
+            this.SetBackgroundColor(Color.White);
+        }
 
         public override void Draw(Canvas canvas)
         {

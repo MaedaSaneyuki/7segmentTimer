@@ -19,14 +19,19 @@ namespace _7segmentTimer
         {
             Content = new StackLayout
             {
-                Spacing = 15,
-                VerticalOptions = LayoutOptions.Start,
+                Spacing = 0,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
                 Children = {
+                    
                     new CameraXamarineView
                     {
+                        IsPreviewing = true,
+                        Camera = CameraOptions.Rear,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand
                     }
+                    
 
                 }
             };

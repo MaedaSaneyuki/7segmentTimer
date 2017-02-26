@@ -14,22 +14,34 @@ namespace _7segmentTimer
 		{
 			base.OnElementChanged (e);
 
-			if (Control == null) {
-				cameraPreview = new CameraPreviewGroup (Context);
-				SetNativeControl (cameraPreview);
-			}
+            try
+            {
+                if (Control == null)
+                {
+                    cameraPreview = new CameraPreviewGroup(Context);
+                    SetNativeControl(cameraPreview);
+                }
 
-			if (e.OldElement != null) {
-				// Unsubscribe
-				cameraPreview.Click -= OnCameraPreviewClicked;
-			}
-			if (e.NewElement != null) {
-				Control.Preview = Camera.Open ((int)e.NewElement.Camera);
+                if (e.OldElement != null)
+                {
+                    // Unsubscribe
+                    cameraPreview.Click -= OnCameraPreviewClicked;
+                }
+                if (e.NewElement != null)
+                {
+                    Control.Preview = Camera.Open((int)e.NewElement.Camera);
 
-				// Subscribe
-				cameraPreview.Click += OnCameraPreviewClicked;
-			}
-		}
+                    // Subscribe
+                    cameraPreview.Click += OnCameraPreviewClicked;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(@"			ERROR: ", ex.ToString());
+            }
+
+        }
 
 		void OnCameraPreviewClicked (object sender, EventArgs e)
 		{
