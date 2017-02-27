@@ -88,7 +88,7 @@
     <Compile Include="CameraPreviewGroup.cs" />
     <Compile Include="CameraPreviewContentPage.cs" />
     <Compile Include="CameraPreviewRenderer.cs" />
-    <Compile Include="ClockView.cs" />
+    <Compile Include="ClockAndroidView.cs" />
     <Compile Include="ClockXamarineFormsView.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainActivityRender.cs" />

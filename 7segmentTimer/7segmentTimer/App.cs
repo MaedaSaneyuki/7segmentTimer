@@ -4,8 +4,11 @@ namespace _7segmentTimer
 {
     public class App : Application
     {
+        public static int LastReadLED;
+
         public App()
         {
+            LastReadLED = -1;
             MainPage = new NavigationPage(new MainContentPage());
         }
 

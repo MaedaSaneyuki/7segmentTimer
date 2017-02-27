@@ -30,8 +30,7 @@ namespace _7segmentTimer
             set { SetValue(DebuggerDoruckingPropaty, value); }
         }
 
-
-
+        
 
     }
 

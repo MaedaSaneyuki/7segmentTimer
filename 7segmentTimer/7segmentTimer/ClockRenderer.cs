@@ -54,12 +54,27 @@ namespace _7segmentTimer
 
     public sealed class ViewGroupSub : ViewGroup
     {
-        private ClockAndroidView clockView;
+        private ClockAndroidView clockAndroidView;
 
         public ViewGroupSub(Context context): base(context)
         {
-            clockView = new ClockAndroidView(context);
-            AddView(clockView);
+            clockAndroidView = new ClockAndroidView(context);
+            AddView(clockAndroidView);
+
+            clockAndroidView.Touch += (s, e) =>
+            {
+                if (e.Event.Action == MotionEventActions.Down)
+                {
+                    clockAndroidView.drucking = true;
+                }
+                else if (e.Event.Action == MotionEventActions.Up)
+                {
+                    clockAndroidView.drucking = false;
+                }
+
+                //System.Diagnostics.Debug.WriteLine("e.Event = {0}", e.Event);
+
+            };
         }
 
         protected override void OnLayout(bool changed, int l, int t, int r, int b)
@@ -67,14 +82,17 @@ namespace _7segmentTimer
             var msw = MeasureSpec.MakeMeasureSpec(r - l, MeasureSpecMode.Exactly);
             var msh = MeasureSpec.MakeMeasureSpec(b - t, MeasureSpecMode.Exactly);
 
-            clockView.Measure(msw, msh);
-            clockView.Layout(0, 0, r - l, b - t);
+            clockAndroidView.Measure(msw, msh);
+            clockAndroidView.Layout(0, 0, r - l, b - t);
         }
 
         public DateTime PeriodEnd
         {
-            get { return clockView.periodEnd; }
-            set { clockView.periodEnd = value; }
+            get { return clockAndroidView.periodEnd; }
+            set {
+                clockAndroidView.periodEnd = value;
+                clockAndroidView.incleaseMinutes = 0;
+            }
         }
        
 

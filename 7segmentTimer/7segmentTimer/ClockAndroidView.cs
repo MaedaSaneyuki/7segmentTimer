@@ -21,6 +21,13 @@ namespace _7segmentTimer
         private Timer timer;
         private Handler handler = new Handler();
         public DateTime periodEnd = DateTime.MinValue;
+        public bool drucking;
+        public int incleaseMinutes;
+        
+        private DateTime DateTime_Now
+        {
+            get { return DateTime.Now.AddMinutes(incleaseMinutes); }
+        }
 
         public ClockAndroidView(Context context) : base(context)
         {
@@ -36,8 +43,30 @@ namespace _7segmentTimer
                 
                
             };
+            drucking = false;
+            incleaseMinutes = 0;
 
         }
+
+        public override bool OnTouchEvent(MotionEvent e)
+        {
+        
+            if(e.Action == MotionEventActions.Down)
+            {
+                drucking = true;
+            }
+            else if(e.Action == MotionEventActions.Up)
+            {
+                drucking = false;
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("e.Action={0}", e.Action.ToString());
+            }
+
+            return base.OnTouchEvent(e);
+        }
+
 
         public override void Draw(Canvas canvas)
         {
@@ -48,7 +77,7 @@ namespace _7segmentTimer
                 clockcircle(canvas, paint);
 
                 drawClockSecHand(canvas, paint);
-                if(periodEnd > DateTime.Now)
+                if(periodEnd > DateTime_Now)
                 {
                     drawPeriod(canvas, paint);
                 }
@@ -58,6 +87,12 @@ namespace _7segmentTimer
                 clockcenter(canvas, paint);
             //    createmesh(canvas, paint);
             }
+
+            if (drucking)
+            {
+                incleaseMinutes++;
+            }
+
         }
 
         private void drawPeriod(Canvas canvas, Paint paint)
@@ -68,13 +103,13 @@ namespace _7segmentTimer
             var center = Width / 2;
             var rShortHand = (float)(center * 0.60);
             var rLongHand = (float)(center * 0.80);
-            var now = DateTime.Now;
+            var now = DateTime_Now;
 
 
             //í∑êj
-            var shitaPeriod = 360 -(periodEnd.Minute + 15) * 6;
-            var shitaMin = 360 - (now.Minute + 15) * 6;
-
+            var shitaPeriod = 360 -(15 - periodEnd.Minute) * 6;
+            var shitaMin = 360 - ( 15 - now.Minute) * 6;
+            
 
             paint.SetStyle(Paint.Style.Fill);
             paint.Color = Color.Pink;
@@ -131,7 +166,7 @@ namespace _7segmentTimer
 
             var center = Width / 2;
             var rLongHand = (float)(center * 0.79);
-            var now = DateTime.Now;
+            var now = DateTime_Now;
 
             //ïbêj
             var shitaMin = (now.Second + 15) * Math.PI / 30;
@@ -153,7 +188,7 @@ namespace _7segmentTimer
             var center = Width / 2;
             var rShortHand = (float)(center * 0.60);
             var rLongHand = (float)(center * 0.80);
-            var now = DateTime.Now;
+            var now = DateTime_Now;
 
             //í∑êj
             var shitaMin = (now.Minute+15) * Math.PI / 30;
@@ -205,6 +240,8 @@ namespace _7segmentTimer
             paint.SetStyle(Paint.Style.Stroke);//ÉXÉ^ÉCÉãÇê¸ï`âÊÇ…ê›íË
             paint.StrokeWidth = 40;
             paint.Color  = new Color(0x49,0x71,0xFF);
+            if(drucking) paint.Color = Color.Pink;
+
             canvas.DrawCircle(center, center,  r , paint);
 
         }

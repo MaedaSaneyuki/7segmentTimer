@@ -55,12 +55,13 @@ namespace _7segmentTimer
         {
             base.OnAppearing();
 
-            Random rnd = new Random((int)DateTime.Now.Ticks);
-            var nextPeriod = rnd.Next() % 60;
 
-            System.Diagnostics.Debug.WriteLine("MainContentPage - OnAppearing nextPeriod={0}", args: nextPeriod);
+            if (App.LastReadLED < 1) return;
+            
+            System.Diagnostics.Debug.WriteLine("MainContentPage - OnAppearing nextPeriod App.LastReadLED={0}", args: App.LastReadLED);
+            clock.PeriodEnd = DateTime.Now.AddMinutes(App.LastReadLED);
+            App.LastReadLED = -1;
 
-            clock.PeriodEnd = DateTime.Now.AddMinutes(nextPeriod);
         }
 
 
