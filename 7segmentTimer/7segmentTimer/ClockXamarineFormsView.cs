@@ -30,7 +30,19 @@ namespace _7segmentTimer
             set { SetValue(DebuggerDoruckingPropaty, value); }
         }
 
-        
+        public static readonly BindableProperty OnPeriodEndPropaty = BindableProperty.Create(
+            propertyName: "OnPeriodEnd",
+            returnType: typeof(Action),
+            declaringType: typeof(ClockXamarineFormsView),
+            defaultValue: null);
+
+        public Action OnPeriodEnd
+        {
+            get { return (Action)GetValue(OnPeriodEndPropaty); }
+            set { SetValue(OnPeriodEndPropaty, value); }
+        }
+
+
 
     }
 

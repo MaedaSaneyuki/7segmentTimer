@@ -25,11 +25,19 @@ namespace _7segmentTimer
         protected override void OnElementChanged(ElementChangedEventArgs<_7segmentTimer.ClockXamarineFormsView> e)
         {
             base.OnElementChanged(e);
-            if (Control == null)
+            try
             {
-                var cameraPreview = new ViewGroupSub(Context); 
-                SetNativeControl(cameraPreview);
+                if (Control == null)
+                {
+                    var cameraPreview = new ViewGroupSub(Context);
+                    SetNativeControl(cameraPreview);
+                }
             }
+            catch (Exception ex )
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+
         }
         
         protected override void OnElementPropertyChanged( // <--3
@@ -38,17 +46,31 @@ namespace _7segmentTimer
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (this.Element == null || this.Control == null)
-            {
-                return;
-            }
-
-            if (e.PropertyName == ClockXamarineFormsView.PeriodEndPropaty.PropertyName)
+            try
             {
 
-                ((ViewGroupSub)this.Control).PeriodEnd = Element.PeriodEnd;
-                
+                if (this.Element == null || this.Control == null)
+                {
+                    return;
+                }
+
+                if (e.PropertyName == ClockXamarineFormsView.PeriodEndPropaty.PropertyName)
+                {
+
+                    ((ViewGroupSub)this.Control).PeriodEnd = Element.PeriodEnd;
+
+                }
+                else if (e.PropertyName == ClockXamarineFormsView.OnPeriodEndPropaty.PropertyName)
+                {
+                    System.Diagnostics.Debug.WriteLine("((ViewGroupSub)this.Control).SetOnPeriodEnd(Element.OnPeriodEnd);");
+                    ((ViewGroupSub)this.Control).SetOnPeriodEnd(Element.OnPeriodEnd);
+                }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+
         }
     }
 
@@ -95,7 +117,10 @@ namespace _7segmentTimer
             }
         }
        
-
+        public void SetOnPeriodEnd(Action act)
+        {
+            clockAndroidView.OnPeriodEnd = act;
+        }
 
     }
 

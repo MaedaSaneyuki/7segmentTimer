@@ -21,7 +21,7 @@ namespace _7segmentTimer
             {
                 Text = "カメラ読み取り",
                 FontAttributes = FontAttributes.None,
-                FontSize = 18
+                FontSize = 20
             };
 
             button.Clicked += (s, e) => 
@@ -36,7 +36,7 @@ namespace _7segmentTimer
                 PeriodEnd = DateTime.MinValue,
                 DebuggerDorucking = false
             };
-            
+
             this.BackgroundColor = Color.White;
             
             Content = new StackLayout
@@ -60,6 +60,11 @@ namespace _7segmentTimer
             
             System.Diagnostics.Debug.WriteLine("MainContentPage - OnAppearing nextPeriod App.LastReadLED={0}", args: App.LastReadLED);
             clock.PeriodEnd = DateTime.Now.AddMinutes(App.LastReadLED);
+            clock.OnPeriodEnd = () =>
+            {
+                Navigation.PushAsync(new FinishContentPage());
+            };
+
             App.LastReadLED = -1;
 
         }

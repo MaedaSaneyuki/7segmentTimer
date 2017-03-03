@@ -20,9 +20,18 @@ namespace _7segmentTimer
     {
         private Timer timer;
         private Handler handler = new Handler();
-        public DateTime periodEnd = DateTime.MinValue;
+        private DateTime _periodEnd = DateTime.MinValue;
+        public DateTime periodEnd {
+            get { return _periodEnd; }
+            set {
+                System.Diagnostics.Debug.WriteLine("_periodEnd{0} = value{1}", _periodEnd.Minute,  value.Minute);
+                _periodEnd = value;
+            }
+        }
         public bool drucking;
         public int incleaseMinutes;
+        public Action OnPeriodEnd;
+        public int anime;
         
         private DateTime DateTime_Now
         {
@@ -33,7 +42,7 @@ namespace _7segmentTimer
         {
             this.SetBackgroundColor(Color.White);
             timer = new Timer();
-            timer.Interval = 500;
+            timer.Interval = 260/3;
             timer.AutoReset = true;
             timer.Enabled = true;
 
@@ -45,7 +54,7 @@ namespace _7segmentTimer
             };
             drucking = false;
             incleaseMinutes = 0;
-
+            
         }
 
         public override bool OnTouchEvent(MotionEvent e)
@@ -81,6 +90,16 @@ namespace _7segmentTimer
                 {
                     drawPeriod(canvas, paint);
                 }
+                else if(periodEnd != DateTime.MinValue)
+                {
+                    System.Diagnostics.Debug.WriteLine("OnPeriodEnd! (OnPeriodEnd != null)={0}", OnPeriodEnd != null);
+                    var nManager = Context.GetSystemService("notification").JavaCast<NotificationManager>(); // (NotificationManager) GetSystemService(NotificationService);
+                    var notification = new Notification();
+                    notification.Vibrate = new long[] { 0, 200, 100, 200, 100, 200 };
+                    nManager.Notify(0, notification);
+                    if (OnPeriodEnd != null) OnPeriodEnd.Invoke();
+                    periodEnd = DateTime.MinValue;
+                }
                 drawClockHand(canvas, paint);
                 drawClockHandTest(canvas, paint);
 
@@ -92,9 +111,14 @@ namespace _7segmentTimer
             {
                 incleaseMinutes++;
             }
-
+            anime++;
         }
 
+        private int debugVal = 0;
+
+        private int End = 11;
+        private int Min = 3;
+        
         private void drawPeriod(Canvas canvas, Paint paint)
         {
             paint.AntiAlias = true;
@@ -105,29 +129,54 @@ namespace _7segmentTimer
             var rLongHand = (float)(center * 0.80);
             var now = DateTime_Now;
 
-
-            //’·j
             var shitaPeriod = 360 -(15 - periodEnd.Minute) * 6;
             var shitaMin = 360 - ( 15 - now.Minute) * 6;
-            
+
+            //var shitaPeriod = 360 - (15 - this.End) * 6;
+            //var shitaMin = 360 - (15 - this.Min) * 6;
+
+            //shitaPeriod = shitaPeriod % 360;
+            //shitaMin = shitaMin % 360;
+
+            System.Diagnostics.Debug.WriteLine("shitaPeriod={0} shitaMin={1}",shitaPeriod, shitaMin);
 
             paint.SetStyle(Paint.Style.Fill);
-            paint.Color = Color.Pink;
-            paint.Alpha = 80;
+            var animeReduce = (double)(anime%30) / 30;
+            var redReduce = (int)((0xff-0x49) * animeReduce+0x49) % 0xff;
+            var greeenReduce = (int)((0xff-0x71) * animeReduce+0x71) % 0xff;
+            var blueReduce = (int)(0x80 * animeReduce+0x70);
+
+            //            System.Diagnostics.Debug.WriteLine("anime={0} animeReduce={1} greeenReduce=0x{2:X2}", anime, animeReduce, greeenReduce);
+
+
+            float startAngle = shitaMin;
+            float sweepAngle = shitaPeriod - shitaMin;
+
+            if (shitaMin % 360 > 180)
+            {
+                startAngle = shitaPeriod;
+                sweepAngle = shitaMin - shitaPeriod;
+            }
+
+
+            paint.Color = new Color(redReduce, greeenReduce, 0xFF);
+            paint.Alpha = 0xC0;
             canvas.DrawArc((float)(center*0.1), (float)(center * 0.1),
                 (float)(center *2*0.95),
                 (float)(center *2*0.95),
-                (float)shitaPeriod,
-                (float)shitaMin,
+                (float)startAngle,
+                (float)sweepAngle,
+                //(float)debugVal,
                 true,
                 paint);
             paint.SetStyle(Paint.Style.Stroke);
-            paint.Color = Color.Red;
+            paint.Color = Color.Argb(0xff,0,0,0xff);
             canvas.DrawArc((float)(center * 0.1), (float)(center * 0.1),
                 (float)(center * 2 * 0.95),
                 (float)(center * 2 * 0.95),
-                (float)shitaPeriod,
-                (float)shitaMin,
+                (float)startAngle,
+                //(float)debugVal,
+                (float)sweepAngle,
                 true,
                 paint);
 

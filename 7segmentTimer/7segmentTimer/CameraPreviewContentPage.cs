@@ -40,7 +40,7 @@ namespace _7segmentTimer
         protected override bool OnBackButtonPressed()
         {
             Random rnd = new Random((int)DateTime.Now.Ticks);
-            App.LastReadLED = rnd.Next() % 60;
+            App.LastReadLED = rnd.Next() % 30;
 
             System.Diagnostics.Debug.WriteLine("CameraPreviewContentPage - OnBackButtonPressed App.LastReadLED={0}", args: App.LastReadLED);
 
