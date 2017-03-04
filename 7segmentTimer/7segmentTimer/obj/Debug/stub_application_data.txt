@@ -1,2 +1,0 @@
-android.app.Application
-x_7segmentTimer.x_7segmentTimer
