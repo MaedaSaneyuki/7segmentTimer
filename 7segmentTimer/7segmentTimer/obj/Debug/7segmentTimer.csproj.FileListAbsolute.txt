@@ -9,13 +9,15 @@ C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\Xam
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\Xamarin.Forms.Xaml.dll
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\Xamarin.Forms.Core.xml
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\7segmentTimer.csprojResolveAssemblyReference.cache
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\7segmentTimer.dll
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\7segmentTimer.pdb
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\bin\x_7segmentTimer.x_7segmentTimer.apk
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\layout\main.xml
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\values\strings.xml
+C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\icon420.png
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\icon.png
+C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\addummy.png
+C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\sentaku.jpg
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\R.cs.flag
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\uploadflags.txt
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\7segmentTimer.dll.mdb
@@ -42,8 +44,5 @@ C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\and
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\icon420.png
-C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\addummy.png
-C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\res\drawable\sentaku.jpg
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\7segmentTimer.dll.mdb
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\7segmentTimer.dll.mdb
