@@ -90,7 +90,7 @@ namespace _7segmentTimer
             parameters.SetPreviewSize(previewSize.Width, previewSize.Height);
 
             //フレームレート設定
-            parameters.SetPreviewFpsRange(10000, 24000);
+            //parameters.SetPreviewFpsRange(10000, 24000);
 
 			RequestLayout ();
 
