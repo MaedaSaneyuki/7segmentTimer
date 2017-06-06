@@ -32,7 +32,8 @@ namespace _7segmentTimer
 		public CameraPreviewGroup (Context context)
 			: base (context)
 		{
-			surfaceView = new SurfaceView (context);
+
+            surfaceView = new SurfaceView (context);
 			AddView (surfaceView);
 
 			windowManager = Context.GetSystemService (Context.WindowService).JavaCast<IWindowManager> ();

@@ -34,3 +34,4 @@ C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\and
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Text.RegularExpressions.dll
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Collections.Concurrent.dll
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Runtime.InteropServices.dll
+C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\Mono.Security.dll

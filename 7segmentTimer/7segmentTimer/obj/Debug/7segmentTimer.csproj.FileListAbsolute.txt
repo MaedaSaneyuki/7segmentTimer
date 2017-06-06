@@ -45,5 +45,3 @@ C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\and
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
 C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\7segmentTimer.csprojResolveAssemblyReference.cache
-C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\obj\Debug\7segmentTimer.dll.mdb
-C:\Users\LYCEE\Documents\7segmentTimer\7segmentTimer\7segmentTimer\bin\Debug\7segmentTimer.dll.mdb
